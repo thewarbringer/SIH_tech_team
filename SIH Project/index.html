@@ -1,11 +1,193 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(180deg, #a2e2ff 0%, #d4fbe1 100%);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .welcome-container {
+      text-align: center;
+      color: #2e5e4e;
+      animation: fadeIn 2s ease;
+      z-index: 10;
+    }
+
+    .welcome-container h1 {
+      font-size: 3rem;
+      margin-bottom: 40px;
+      color: #2d8659;
+      text-shadow: 2px 2px #ffffff;
+    }
+
+    /* Play button */
+    .play-button {
+      width: 120px;
+      height: 120px;
+      background: #2d8659;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
+      animation: bounce 1.5s infinite;
+      margin: auto;
+    }
+
+    .play-button:hover {
+      transform: scale(1.1);
+      background: #36a373;
+    }
+
+    .play-icon {
+      width: 0; 
+      height: 0; 
+      border-left: 40px solid white;
+      border-top: 22px solid transparent;
+      border-bottom: 22px solid transparent;
+      margin-left: 10px;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Clouds */
+    .cloud {
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+      opacity: 0.9;
+      animation: moveClouds 60s linear infinite;
+    }
+
+    .cloud:before, .cloud:after {
+      content: '';
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+    }
+
+    .cloud1 {
+      width: 100px; height: 60px;
+      top: 80px; left: -150px;
+      animation-duration: 50s;
+    }
+    .cloud1:before { width: 60px; height: 60px; left: -30px; top: 0; }
+    .cloud1:after  { width: 60px; height: 60px; left: 50px; top: -20px; }
+
+    .cloud2 {
+      width: 150px; height: 80px;
+      top: 150px; left: -200px;
+      animation-duration: 70s;
+    }
+    .cloud2:before { width: 70px; height: 70px; left: -40px; top: 5px; }
+    .cloud2:after  { width: 80px; height: 80px; left: 60px; top: -15px; }
+
+    .cloud3 {
+      width: 120px; height: 70px;
+      top: 50px; left: -180px;
+      animation-duration: 65s;
+    }
+    .cloud3:before { width: 60px; height: 60px; left: -35px; top: 10px; }
+    .cloud3:after  { width: 70px; height: 70px; left: 55px; top: -10px; }
+
+    @keyframes moveClouds {
+      from { transform: translateX(0); }
+      to { transform: translateX(120vw); }
+    }
+
+    /* Tree images */
+    .tree {
+      position: absolute;
+      bottom: 0;
+      z-index: 5;
+    }
+
+    .tree img {
+      width: 25vw;
+      height: 100vh;
+    }
+
+    .tree1 { left: 0%; }
+    .tree2 { left: 65%; }
+    .tree3 { left: 75%; }
+
+    /* Animals */
+    .animal {
+      position: absolute;
+      bottom: 0;
+      z-index: 6;
+    }
+
+    .animal img {
+      height: 40vh; /* 40% of viewport height */
+      width: auto;
+    }
+
+    .animal-left { left: 15%; }
+    .animal-right { right: 20%; }
+  </style>
 </head>
 <body>
-    
+  <!-- Clouds -->
+  <div class="cloud cloud1"></div>
+  <div class="cloud cloud2"></div>
+  <div class="cloud cloud3"></div>
+
+  <!-- Welcome message and Play button -->
+  <div class="welcome-container">
+    <h1>Let's explore our environment       </h1>
+    <div class="play-button" onclick="redirectToGame()">
+      <div class="play-icon"></div>
+    </div>
+  </div>
+
+  <!-- Trees -->
+  <div class="tree tree1">
+    <img src="images\Gemini_Generated_Image_rwqcqlrwqcqlrwqc.png" alt="Tree 1">
+  </div>
+  <div class="tree tree2">
+    <img src="images\ttwo.png" alt="Tree 2">
+  </div>
+  <div class="tree tree3">
+    <img src="images\Gemini_Generated_Image_rwqcqlrwqcqlrwqc.png" alt="Tree 3">
+  </div>
+
+  <!-- Animals -->
+  <div class="animal animal-left">
+    <img src="images\lio.png" alt="Animal Left">
+  </div>
+  <div class="animal animal-right">
+    <img src="images\ele.png" alt="Animal Right">
+  </div>
+
+  <script>
+    function redirectToGame() {
+      window.location.href = "main.html"; // change this to your page
+    }
+  </script>
 </body>
 </html>
