@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Character with 4 Interaction Spots</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f0f0f0;
+    }
+    canvas {
+      width: 90vw;
+      height: 90vh;
+      background-image: url('images/img.png');
+      background-size:contain;
+      border: 2px solid #333;
+      display: block;
+    }
+    .spot {
+      position: absolute;
+      width: 10vw;
+      height: 10vw;
+      cursor: pointer;
+    }
+    .spot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .spot.top-left { top: 5%; left: 5%; }
+    .spot.top-right { top: 5%; right: 5%; }
+    .spot.bottom-left { bottom: 5%; left: 5%; }
+    .spot.bottom-right { bottom: 5%; right: 5%; }
+  </style>
+</head>
+<body>
+  <div style="position: relative; width: 90vw; height: 90vh;">
+    <canvas id="game"></canvas>
+    <div class="spot top-left"><img src="images/fac.jpg " alt="Spot 1"></div>
+    <div class="spot top-right"><img src="images/gar.jpg" alt="Spot 2"></div>
+    <div class="spot bottom-left"><img src="images/house.jpg" alt="Spot 3"></div>
+    <div class="spot bottom-right"><img src="images/school.jpg" alt="Spot 4"></div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('game');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+      canvas.width = canvas.clientWidth;
+      canvas.height = canvas.clientHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    const character = { x: canvas.width/2, y: canvas.height/2, size: 20 };
+
+    function drawCharacter() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = 'black';
+      ctx.beginPath();
+      ctx.arc(character.x, character.y, character.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    drawCharacter();
+  </script>
+</body>
+</html>
